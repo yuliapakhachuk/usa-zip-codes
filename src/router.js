@@ -6,20 +6,23 @@ import * as VueRouter from 'vue-router';
 
 const routes = [
     { 
-        path: '/', 
-        component: HomePage,
-        name: "homepage"
-    },
-    { 
-        path: '/info/:code', 
-        component: InfoPage,
-        name: "info"
-    },
-    { 
-        path: "/:catchAll(.*)", 
-        component: ErrorPage,
-    },
-
+        path: "/",
+        children: [
+            {    path: '', 
+                component: HomePage,
+                name: "homepage"
+            },
+            { 
+                path: 'info/:code', 
+                component: InfoPage,
+                name: "info"
+            },
+            { 
+                path: ":catchAll(.*)", 
+                component: ErrorPage,
+            },
+        ]
+    }
 ]
 
 const router = VueRouter.createRouter({ 
